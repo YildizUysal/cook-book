@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14133" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Cooks" representedClassName="Cooks" syncable="YES" codeGenerationType="class">
+        <attribute name="cookDegree" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="cookImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="cookName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cookTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="prepareName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Cooks" positionX="-63" positionY="-18" width="128" height="120"/>
+    </elements>
 </model>
