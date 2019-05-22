@@ -12,12 +12,11 @@ import CoreData
 class DetailsController: UIViewController {
 
     @IBOutlet weak var detailsImage: UIImageView!
+    @IBOutlet weak var lblCookName: UILabel!
     
     @IBOutlet weak var lblPrepareName: UILabel!
     @IBOutlet weak var lblCookTime: UILabel!
     @IBOutlet weak var lblCookDegree: UILabel!
-    @IBOutlet weak var lblCookName: UILabel!
-    
     var choosenCook = ""
     var editchoosenCook = ""
     
@@ -31,7 +30,6 @@ class DetailsController: UIViewController {
     
     @objc func getInfoget(){
         if choosenCook != "" {
-            print(choosenCook)
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
             
@@ -43,30 +41,29 @@ class DetailsController: UIViewController {
                 let results = try context.fetch(fetchReguest)
                 if results.count > 0 {
                     for result in results as! [NSManagedObject]{
-                        if let name = result.value(forKey: "cookName") as? String{
-                            lblCookName.text = name
+                            if let name = result.value(forKey: "cookName") as? String{
+                                lblCookName.text = name
+                            }
+                            if let prename = result.value(forKey: "prepareName") as? String{
+                                lblPrepareName.text = prename
+                            }
+                            if let degree = result.value(forKey: "cookDegree") as? Int{
+                                lblCookDegree.text = String(degree)
+                            }
+                            if let time = result.value(forKey: "cookTime") as? String{
+                                lblCookTime.text = time
+                            }
+                            if let imagedata = result.value(forKey: "cookImage") as? Data{
+                                let img = UIImage(data: imagedata)
+                                self.detailsImage.image = img
+                            }
                         }
-                        if let prename = result.value(forKey: "prepareName") as? String{
-                            lblPrepareName.text = prename
-                        }
-                        if let degree = result.value(forKey: "cookDegree") as? Int{
-                            lblCookDegree.text = String(degree)
-                        }
-                        if let time = result.value(forKey: "cookTime") as? String{
-                            lblCookTime.text = time
-                        }
-                        if let imagedata = result.value(forKey: "cookImage") as? Data{
-                            let img = UIImage(data: imagedata)
-                            self.detailsImage.image = img
-                        }
-                    }
                 }
             }catch{
                 
             }
         }
-            if choosenCook == "" {
-                print(choosenCook)
+            if editchoosenCook != "" {
                 let appDelegate = UIApplication.shared.delegate as! AppDelegate
                 let context = appDelegate.persistentContainer.viewContext
                 

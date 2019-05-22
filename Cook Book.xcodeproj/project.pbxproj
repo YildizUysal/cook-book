@@ -66,12 +66,12 @@
 				061138E82292ED890047C9AD /* EditsController.swift */,
 				061138D12291C2600047C9AD /* AppDelegate.swift */,
 				061138D32291C2600047C9AD /* ViewController.swift */,
+				061138E62292ED7B0047C9AD /* DetailsController.swift */,
 				061138D52291C2600047C9AD /* Main.storyboard */,
 				061138DB2291C2620047C9AD /* Assets.xcassets */,
 				061138DD2291C2620047C9AD /* LaunchScreen.storyboard */,
 				061138E02291C2620047C9AD /* Info.plist */,
 				061138D82291C2600047C9AD /* Cook_Book.xcdatamodeld */,
-				061138E62292ED7B0047C9AD /* DetailsController.swift */,
 			);
 			path = "Cook Book";
 			sourceTree = "<group>";

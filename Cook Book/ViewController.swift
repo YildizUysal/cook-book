@@ -80,6 +80,47 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete{
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            
+            let fetchReguest = NSFetchRequest<NSFetchRequestResult>(entityName: "Cooks")
+            
+            
+            do{
+               let results = try context.fetch(fetchReguest)
+                
+                for result in results as! [NSManagedObject]{
+                    if let name = result.value(forKey: "cookName") as? String{
+                        if name == nameArray[indexPath.row]{
+                            context.delete(result)
+                            nameArray.remove(at: indexPath.row)
+                            timeArray.remove(at: indexPath.row)
+                            degreeArray.remove(at: indexPath.row)
+                            prenameArray.remove(at: indexPath.row)
+                            imageArray.remove(at: indexPath.row)
+                            self.tableView.reloadData()
+                            do{
+                                try context.save()
+                            }
+                            catch{
+                                
+                            }
+                            break
+                        }
+                    }
+                }
+            }catch{
+                
+            }
+            
+            
+            
+        }
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GoToDetails" {
             let destinationDet = segue.destination as! DetailsController

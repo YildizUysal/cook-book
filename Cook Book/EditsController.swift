@@ -83,7 +83,6 @@ class EditsController: UIViewController, UIImagePickerControllerDelegate, UINavi
 
     @IBAction func btnSave(_ sender: Any) {
         if chosedCook == "" {
-            print("boş basıldı save")
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
         
@@ -110,8 +109,6 @@ class EditsController: UIViewController, UIImagePickerControllerDelegate, UINavi
             self.navigationController?.popViewController(animated: true)
         }
         if chosedCook != ""{
-         
-            print("boş değil save")
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context = appDelegate.persistentContainer.viewContext
             
@@ -122,7 +119,6 @@ class EditsController: UIViewController, UIImagePickerControllerDelegate, UINavi
             do{
                 let results = try context.fetch(fetchReguest)
                 if results.count > 0 {
-                    print("resim kaydetme")
                     for result in results as! [NSManagedObject]{
                         if let name = txtCookName.text{
                             result.setValue(name, forKey: "cookName")
@@ -146,7 +142,7 @@ class EditsController: UIViewController, UIImagePickerControllerDelegate, UINavi
                         
                     }
                 }
-//               DetailsController.choosenCook
+                
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "goDetails"), object: chosedCook)
                 self.navigationController?.popViewController(animated: true)
             }catch{
