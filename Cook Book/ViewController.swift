@@ -76,7 +76,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             
         } catch  {
-            print("selam hata var.")
+            print("hata var.")
         }
         
     }
